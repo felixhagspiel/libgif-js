@@ -17,7 +17,7 @@
 			<img id="example1" src="./example_gifs/rub_test_preview.jpg" rel:animated_src="./example_gifs/rub_test.gif" rel:auto_play="0" width="467" height="375" />
 			<br>
 			<script type="text/javascript">
-				var sup1 = new SuperGif({ gif: document.getElementById('example1'), on_framestep: function(index){console.info('yay', index)} } );
+				var sup1 = new SuperGif({ gif: document.getElementById('example1') } );
 				sup1.load();
 			</script>
 			<a href="javascript:;" onmousedown="sup1.pause(); return false;">Pause</a> |
