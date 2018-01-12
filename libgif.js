@@ -28,6 +28,7 @@
 		auto_play 			Optional. Same as the rel:auto_play attribute above, this arg overrides the img tag info.
 		max_width			Optional. Scale images over max_width down to max_width. Helpful with mobile.
  		on_end				Optional. Add a callback for when the gif reaches the end of a single loop (one iteration). The first argument passed will be the gif HTMLElement.
+		on_framestep	Optional. Add a callback which is executed on each framestep. The first argument passed will be the current frame index.
 		loop_delay			Optional. The amount of time to pause (in ms) after each single loop (iteration).
 		draw_while_loading	Optional. Determines whether the gif will be drawn to the canvas whilst it is loaded.
 		show_progress_bar	Optional. Only applies when draw_while_loading is set to true.
@@ -460,6 +461,7 @@
             options.auto_play = (!gif.getAttribute('rel:auto_play') || gif.getAttribute('rel:auto_play') == '1');
 
         var onEndListener = (options.hasOwnProperty('on_end') ? options.on_end : null);
+        var onFrameStepListener = (options.hasOwnProperty('on_framestep') ? options.on_framestep : null);
         var loopDelay = (options.hasOwnProperty('loop_delay') ? options.loop_delay : 0);
         var overrideLoopMode = (options.hasOwnProperty('loop_mode') ? options.loop_mode : 'auto');
         var drawWhileLoading = (options.hasOwnProperty('draw_while_loading') ? options.draw_while_loading : true);
@@ -706,7 +708,10 @@
 
             var stepFrame = function (amount) { // XXX: Name is confusing.
                 i = i + amount;
-
+                
+                if(onFrameStepListener !== null)
+                    onFrameStepListener(i);
+              
                 putFrame();
             };
 

@@ -55,6 +55,7 @@ Of note to the developer, libjs.gif contains a class SuperGif, which can be used
 * **max\_width** -			Optional. Scale images over max\_width down to max_width. Helpful with mobile.
 * **rubbable** -			Optional. Make it rubbable.
 * **on_end** -				Optional. Add a callback for when the gif reaches the end of a single loop (one iteration). The first argument passed will be the gif HTMLElement.
+* **on_framestep** -	    Optional. Add a callback which is executed on each framestep. The first argument passed will be the current frame index.
 * **loop_delay** -			Optional. The amount of time to pause (in ms) after each single loop (iteration).
 * **progressbar_height** -			Optional. The height of the progress bar.
 * **progressbar_background_color** -			Optional. The background color of the progress bar.
